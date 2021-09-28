@@ -1,10 +1,15 @@
 package principal;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.stream.IntStream;
 
 public class Palindromo {
 
-    public Boolean ehPalindromo(String palavra){
+    public Boolean ehPalindromo(String palavra) {
+        if (palavra == null || StringUtils.isEmpty(palavra))
+            throw new IllegalArgumentException();
+
         return verificarPalavra(removerCaracteresEspeciais(palavra));
     }
 

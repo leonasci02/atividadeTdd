@@ -12,6 +12,20 @@ public class PalindromoTest {
     private final Palindromo palindromo = new Palindromo();
 
     @Test
+    @DisplayName("Verifica a exceção com texto nulo")
+    public void palindromoExcecaoComTextoNulo() {
+        Assertions.assertThrows(IllegalArgumentException.class,//
+                () -> palindromo.ehPalindromo(null));
+    }
+
+    @Test
+    @DisplayName("Verifica a exceção com texto vazio")
+    public void palindromoExcecaoComTextoVazio() {
+        Assertions.assertThrows(IllegalArgumentException.class,//
+                () -> palindromo.ehPalindromo(""));
+    }
+
+    @Test
     @DisplayName("Verifica se o palindromo é verdadeiro")
     public void palindromoVerdadeiro() {
         List<String> listaDePalindromo = Arrays.asList("Rotator", "bob", "madam", "mAlAyAlam", //
@@ -23,7 +37,7 @@ public class PalindromoTest {
     }
 
     @Test
-    @DisplayName("Verifica se o palidromo eh falso")
+    @DisplayName("Verifica se o palidromo é falso")
     public void palindromoFalso() {
         List<String> listaDePalindromo = Arrays.asList("xyz", "elephant", "Country", "Top . post!", //
                 "Wonderful-fool","Wild imagination!");
@@ -32,5 +46,4 @@ public class PalindromoTest {
             System.out.printf("O texto: %s não é um palíndromo.%n", item);
         });
     }
-
 }
